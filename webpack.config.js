@@ -35,15 +35,27 @@ module.exports = {
       },
       {
         test: /\.css$/i,
+        exclude: /bootstrap\.min\.css$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
               esModule: false,
             },
-          }, 
-          
+          }
+           , 
            "css-loader"],
+      },
+      {
+        test:  /bootstrap\.min\.css$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false,
+            },
+          },
+          'rtlcss-loader']
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
