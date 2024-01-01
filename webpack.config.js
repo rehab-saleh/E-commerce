@@ -34,8 +34,8 @@ module.exports = {
           },
       },
       {
-        test: /\.css$/i,
-        exclude: /bootstrap\.min\.css$/i,
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /custom\.scss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -44,10 +44,13 @@ module.exports = {
             },
           }
            , 
-           "css-loader"],
+           "css-loader",
+           "sass-loader"],
+          
       },
       {
-        test:  /bootstrap\.min\.css$/i,
+        
+        test:  /custom\.scss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -55,7 +58,9 @@ module.exports = {
               esModule: false,
             },
           },
-          'rtlcss-loader']
+          'rtlcss-loader',
+          "sass-loader"],
+        
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -77,6 +82,26 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html"
+    }),
+    new HtmlWebpackPlugin({
+      filename: "product.html",
+      template: "./src/product.html"
+    }),
+    new HtmlWebpackPlugin({
+      filename: "payment.html",
+      template: "./src/payment.html"
+    }),
+    new HtmlWebpackPlugin({
+      filename: "checkout.html",
+      template: "./src/checkout.html"
+    }),
+    new HtmlWebpackPlugin({
+      filename: "search.html",
+      template: "./src/search.html"
+    }),
+    new HtmlWebpackPlugin({
+      filename: "contact.html",
+      template: "./src/contact.html"
     }),
     new MiniCssExtractPlugin({
         filename: "css/style.css"
